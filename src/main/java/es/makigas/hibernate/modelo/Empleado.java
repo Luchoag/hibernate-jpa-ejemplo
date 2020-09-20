@@ -4,9 +4,12 @@ import java.io.Serializable;
 import java.util.Date;
 import java.time.LocalDate;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity	//Es necesario importar la anotación de persistence ya que es la estándar de JPA. NO usar la de Hibernate.
@@ -27,6 +30,12 @@ public class Empleado implements Serializable {
 	
 	@Column(name = "Fecha_Nacimiento")
 	private LocalDate fechaNacimiento;
+	
+	@OneToOne(cascade = { CascadeType.ALL})
+	@JoinColumn(name = "ID_Direccion")
+	private Direccion direccion;
+	
+	
 
 	
 	public Empleado() {
@@ -71,16 +80,21 @@ public class Empleado implements Serializable {
 	public void setFechaNacimiento(LocalDate fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
+	
+	public Direccion getDireccion() {
+		return direccion;
+	}
+
+	public void setDireccion(Direccion direccion) {
+		this.direccion = direccion;
+	}
 
 	@Override
 	public String toString() {
 		return "Empleado [codigo=" + codigo + ", apellido=" + apellido + ", nombre=" + nombre + ", fechaNacimiento="
-				+ fechaNacimiento + "]";
+				+ fechaNacimiento + ", direccion=" + direccion + "]";
 	}
-	
-	
-	
-	
+
 	
 	
 }

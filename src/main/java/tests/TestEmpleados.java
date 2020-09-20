@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.util.GregorianCalendar;
 
 import es.makigas.hibernate.modelo.Empleado;
+import es.makigas.hibernate.modelo.Direccion;
 
 public class TestEmpleados {
 
@@ -61,6 +62,8 @@ public class TestEmpleados {
 		EntityManager manager = emf.createEntityManager();
 		Empleado e = new Empleado(10L, "Pérez", "Pepito", LocalDate.of(1979, 6, 6));
 		Empleado e2 = new Empleado(25L, "Martínez", "José", LocalDate.of(1979, 6, 6));
+		
+		e.setDireccion(new Direccion(15L, "Calle Falsa 123", "Springfield", "Springfield", "EEUU"));
 		
 		manager.getTransaction().begin(); //Comienzan las transacciones
 		manager.persist(e);
