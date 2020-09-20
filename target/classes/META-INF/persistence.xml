@@ -8,6 +8,8 @@
   <persistence-unit name="Persistencia">
   
   <class>es.makigas.hibernate.modelo.Empleado</class>
+  <class>es.makigas.hibernate.modelo.Autor</class>
+  <class>es.makigas.hibernate.modelo.Libro</class>
   
     <properties>
         <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
